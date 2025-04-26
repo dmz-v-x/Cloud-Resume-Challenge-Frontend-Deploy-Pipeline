@@ -20,4 +20,24 @@ jobs:
         node-version: '20'
 
     - name: Clone Private frontend build Repo
-      run
+      run: |
+        git clone https://dmz-v-x:${{secrets.PRIVATE_REPO_PAT}}@github.com/dmz-v-x/Cloud-Resume-Challenge-Frontend-Build.git
+
+    - name: Configure AWS credentials via OIDC
+      uses: aws-actions/configure-aws-credentials@v4
+      with: 
+        role-to-assume: arn:aws:iam::590183681939:role/GitHub-OIDC-Role
+        aws-region: ap-south-1
+
+    - name: Upload to S3
+      run: |
+        aws s3 sync Cloud-Resume-Challenge-Frontend-Build/out/ s3://himanshu-bhatt-portfolio-website --delete --exact-timestamps
+        
+    - name: Invalidate CloudFront
+      run: |
+        aws cloudfront create-invalidation --distribution ${{secrets.CLOUDFRONT_DISTRIBUTION_ID}} --path "/*"
+
+
+
+
+    
