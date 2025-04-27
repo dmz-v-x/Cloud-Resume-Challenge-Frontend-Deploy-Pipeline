@@ -1,5 +1,11 @@
 # 🚀 Frontend Deployment Pipeline – Cloud Resume Challenge
 
+![Deploy Status](https://img.shields.io/github/actions/workflow/status/dmz-v-x/Cloud-Resume-Challenge-Frontend-Deploy-Pipeline/.github/workflows/deploy.yaml?branch=main)
+![AWS S3](https://img.shields.io/badge/AWS-S3-blue)
+![CloudFront](https://img.shields.io/badge/CloudFront-Invalidation-green)
+
+---
+
 This repository contains the **GitHub Actions workflow** to deploy the static frontend of the **Cloud Resume Challenge** to an AWS S3 bucket, along with automatic CloudFront cache invalidation.
 
 ---
@@ -65,4 +71,3 @@ This deployment pipeline is part of the broader [Cloud Resume Challenge](https:/
 - CI/CD Pipelines
 
 ---
-
